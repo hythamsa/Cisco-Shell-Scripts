@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# HA - added transcript session recording "log_file" 30/05/10
-# HA - added a simple move of backups into corresponding date 30/05/10
-# HA - extract failed backups and email out to team 1/06/10
-
-## To do:  Correct extraction of failed backups.
-
 . /root/.bashrc
 
 # Set user, current and new password variables
