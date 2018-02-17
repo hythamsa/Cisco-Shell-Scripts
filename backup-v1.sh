@@ -20,12 +20,12 @@ expfile=/opt/apps/Scripts/backup.expect
 
 if [ -f $expfile ]
   then
-    rm $expfile
+  	rm $expfile
 fi
 
 if [ -f /root/ssh/known_hosts ]
   then
-	rm /root/ssh/known_hosts
+  	rm /root/ssh/known_hosts
 fi
 
 touch $expfile
@@ -53,9 +53,9 @@ telnet-rem)
         echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
         echo 'expect "*>" { send "en\r" }' >> $expfile
         echo 'expect "Password: " { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@'$srv'\r" }' >> $expfile
-		echo 'expect "*? " { send "137.66.253.109\r" }' >> $expfile
-		echo 'expect "*? " { send "'$x'_'$tdate'\r" }' >> $expfile
+	echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@'$srv'\r" }' >> $expfile
+	echo 'expect "*? " { send "137.66.253.109\r" }' >> $expfile
+	echo 'expect "*? " { send "'$x'_'$tdate'\r" }' >> $expfile
         echo 'expect "*#" { send "exit\r" }' >> $expfile
         echo 'close' >> $expfile
         ;;
@@ -78,9 +78,9 @@ telnet-sw)
         echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
         echo 'expect "*>" { send "en\r" }' >> $expfile
         echo 'expect "Password: " { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@10.1.0.109\r" }' >>$expfile
-		echo 'expect "*?" { send "10.1.0.109\r" }' >> $expfile
-		echo 'expect "*?" { send "'$x'_'$tdate'\r" }' >> $expfile
+	echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@10.1.0.109\r" }' >>$expfile
+	echo 'expect "*?" { send "10.1.0.109\r" }' >> $expfile
+	echo 'expect "*?" { send "'$x'_'$tdate'\r" }' >> $expfile
         echo 'expect "*#" { send "exit\r" }' >> $expfile
         echo 'close' >> $expfile
         ;;
@@ -91,9 +91,9 @@ sshv1-rem)
         echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
         echo 'expect "*>" { send "en\r" }' >> $expfile
         echo 'expect "Password: " { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@'$srv'\r" }' >> $expfile
-		echo 'expect "*?" { send "137.66.253.109\r" }' >> $expfile
-		echo 'expect "*?" { send "'$x'_'$tdate'\r" }' >> $expfile
+	echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@'$srv'\r" }' >> $expfile
+	echo 'expect "*?" { send "137.66.253.109\r" }' >> $expfile
+	echo 'expect "*?" { send "'$x'_'$tdate'\r" }' >> $expfile
         echo 'expect "*#" { send "exit\r" }' >> $expfile
         echo 'close' >> $expfile
         ;;
@@ -104,9 +104,9 @@ sshv2-rem)
         echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
         echo 'expect "*>" { send "en\r" }' >> $expfile
         echo 'expect "Password: " { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@'$srv'\r" }' >> $expfile
+	echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@'$srv'\r" }' >> $expfile
         echo 'expect "*?" { send "137.66.253.109\r" }' >> $expfile
-		echo 'expect "*?" { send '$x'_'$tdate'\r" }' >> $expfile
+        echo 'expect "*?" { send '$x'_'$tdate'\r" }' >> $expfile
         echo 'expect "*#" { send "exit\r" }' >> $expfile
         echo 'close' >> $expfile
         ;;
@@ -117,17 +117,17 @@ sshv2-int)
         echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
         echo 'expect "*>" { send "en\r" }' >> $expfile
         echo 'expect "Password: " { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@10.1.0.109\r" }' >> $expfile
-		echo 'expect "*?" { send "10.1.0.109\r" }' >> $expfile
-		echo 'expect "*?" { send "'$x'_'$tdate'\r" }' >> $expfile
+	echo 'expect "*#" { send "copy running-config ftp://'$ftpusr':'$ftppass'@10.1.0.109\r" }' >> $expfile
+	echo 'expect "*?" { send "10.1.0.109\r" }' >> $expfile
+	echo 'expect "*?" { send "'$x'_'$tdate'\r" }' >> $expfile
         echo 'expect "*#" { send "exit\r" }' >> $expfile
         echo 'close' >> $expfile
         ;;
 
 catos-ssh-int)
 	echo 'spawn ssh -l '$usr'' $i >> $expfile
-    echo 'expect "*(yes/no)?" { send "yes\r" }' >> $expfile
-    echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
+    	echo 'expect "*(yes/no)?" { send "yes\r" }' >> $expfile
+    	echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
 	echo 'expect "*>" { send "en\r" }' >> $expfile
 	echo 'expect "*password:" { send "'$enpass'\r" }' >> $expfile
 	echo 'expect "*\(enable\)" { send "copy config ftp all\r" }' >> $expfile
