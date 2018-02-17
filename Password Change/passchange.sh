@@ -97,64 +97,64 @@ sshv2)
         echo 'close' >> $expfile
         ;;
 catos-ssh)
-		echo 'spawn ssh -l '$usr'' $i >> $expfile
+	echo 'spawn ssh -l '$usr'' $i >> $expfile
         echo 'expect "*(yes/no)?" { send "yes\r" }' >> $expfile
         echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
-		echo 'expect "*>" { send "en\r" }' >> $expfile
-		echo 'expect "*password:" { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "*\(enable\)" { send "set localuser user vroot password '$newpass' privilege 0\r" }' >> $expfile
-		echo 'expect "*\(enable\)" { send "set enablepass\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$newenpass'\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$newenpass'\r" }' >> $expfile
-		echo 'expect "*\(enable\)" { send "set password\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$newpass'\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$newpass'\r" }' >> $expfile
-		echo 'expect "*\(enable\)" { send "exit\r" }' >> $expfile
+	echo 'expect "*>" { send "en\r" }' >> $expfile
+	echo 'expect "*password:" { send "'$enpass'\r" }' >> $expfile
+	echo 'expect "*\(enable\)" { send "set localuser user vroot password '$newpass' privilege 0\r" }' >> $expfile
+	echo 'expect "*\(enable\)" { send "set enablepass\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$enpass'\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$newenpass'\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$newenpass'\r" }' >> $expfile
+	echo 'expect "*\(enable\)" { send "set password\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$newpass'\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$newpass'\r" }' >> $expfile
+	echo 'expect "*\(enable\)" { send "exit\r" }' >> $expfile
         echo 'close' >> $expfile
         ;;
 asa)
-		echo 'spawn ssh -l '$usr'' $i >> $expfile
-		echo 'expect "*(yes/no)?" { send "yes\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
-		echo 'expect "*>" { send "en\r" }' >> $expfile
-		echo 'expect "*Password: " { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "*#" { send "conf t\r" }' >> $expfile
-		echo 'expect "*#" { send "username vroot password '$newpass' priv 0\r" }' >> $expfile
-		echo 'expect "*#" { send "enable password '$newenpass'\r" }' >> $expfile	echo 'expect "*#" { send "exit\r" }' >> $expfile
-		echo 'expect "*#" { send "wr mem\r" }' >> $expfile
-		echo 'expect "*#" { send "exit\r" }' >> $expfile
-		;;
+	echo 'spawn ssh -l '$usr'' $i >> $expfile
+	echo 'expect "*(yes/no)?" { send "yes\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
+	echo 'expect "*>" { send "en\r" }' >> $expfile
+	echo 'expect "*Password: " { send "'$enpass'\r" }' >> $expfile
+	echo 'expect "*#" { send "conf t\r" }' >> $expfile
+	echo 'expect "*#" { send "username vroot password '$newpass' priv 0\r" }' >> $expfile
+	echo 'expect "*#" { send "enable password '$newenpass'\r" }' >> $expfile	echo 'expect "*#" { send "exit\r" }' >> $expfile
+	echo 'expect "*#" { send "wr mem\r" }' >> $expfile
+	echo 'expect "*#" { send "exit\r" }' >> $expfile
+	;;
 pix)
-		echo 'spawn telnet ' $i >> $expfile
-		echo 'expect "Password: " { send "'$pass'\r" }' >> $expfile
-		echo 'expect "*>" { send "en\r" }' >> $expfile 
-		echo 'expect "Password: " { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "*#" { send "conf t\r" }' >> $expfile
-		echo 'expect "*#" { send "passwd '$newpass'\r" }' >> $expfile
-		echo 'expect "*#" { send "enable pass '$newenpass'\r" }' >> $expfile
-		echo 'expect "*#" { send "exit\r" }' >> $expfile
-		echo 'expect "*#" { send "wr mem\r" }' >> $expfile
-		echo 'expect "*#" { send "exit\r" }' >> $expfile
-		;;
+	echo 'spawn telnet ' $i >> $expfile
+	echo 'expect "Password: " { send "'$pass'\r" }' >> $expfile
+	echo 'expect "*>" { send "en\r" }' >> $expfile 
+	echo 'expect "Password: " { send "'$enpass'\r" }' >> $expfile
+	echo 'expect "*#" { send "conf t\r" }' >> $expfile
+	echo 'expect "*#" { send "passwd '$newpass'\r" }' >> $expfile
+	echo 'expect "*#" { send "enable pass '$newenpass'\r" }' >> $expfile
+	echo 'expect "*#" { send "exit\r" }' >> $expfile
+	echo 'expect "*#" { send "wr mem\r" }' >> $expfile
+	echo 'expect "*#" { send "exit\r" }' >> $expfile
+	;;
 catos-telnet)
-		echo 'spawn telnet ' $i >> $expfile
-		echo 'expect "Username: " { send "'$usr'\r" }' >> $expfile
-		echo 'expect "Password: " { send "'$pass'\r" }' >> $expfile
-		echo 'expect "*>" { send "en\r" }' >> $expfile
-		echo 'expect "Password: " { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "*\(enable\)" { send "set localuser user vroot password '$newenpass' privilege 0\r" }' >> $expfile
-		echo 'expect "*\(enable\)" { send "set enablepass\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$enpass'\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$newenpass'\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$newenpass'\r" }' >> $expfile
-		echo 'expect "*\(enable\)" { send "set password\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$newpass'\r" }' >> $expfile
-		echo 'expect "assword:" { send "'$newpass'\r" }' >> $expfile
-		echo 'expect "*\(enable\)" { send "exit\r" }' >> $expfile
-		echo 'close' >> $expfile
-;;
+	echo 'spawn telnet ' $i >> $expfile
+	echo 'expect "Username: " { send "'$usr'\r" }' >> $expfile
+	echo 'expect "Password: " { send "'$pass'\r" }' >> $expfile
+	echo 'expect "*>" { send "en\r" }' >> $expfile
+	echo 'expect "Password: " { send "'$enpass'\r" }' >> $expfile
+	echo 'expect "*\(enable\)" { send "set localuser user vroot password '$newenpass' privilege 0\r" }' >> $expfile
+	echo 'expect "*\(enable\)" { send "set enablepass\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$enpass'\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$newenpass'\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$newenpass'\r" }' >> $expfile
+	echo 'expect "*\(enable\)" { send "set password\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$pass'\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$newpass'\r" }' >> $expfile
+	echo 'expect "assword:" { send "'$newpass'\r" }' >> $expfile
+	echo 'expect "*\(enable\)" { send "exit\r" }' >> $expfile
+	echo 'close' >> $expfile
+	;;
 esac
 done
